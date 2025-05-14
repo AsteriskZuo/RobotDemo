@@ -186,9 +186,23 @@ if __name__ == "__main__":
     }
     result3 = Format_Json_template(template3, values3)
     print("测试3结果:", result3)
+    templte4 = '{"xxx": $xxx, "yyy"}'
+    values4 = {
+        "xxx": "123",
+        "yyy": "456"
+    }
+    result4 = Format_Json_template(templte4, values4)
+    print("测试4结果:", result4)
+
+    try:
+        print(f"values3.get('message'): {values3.get('message')},1")
+        json_obj = json.loads(values3.get("message"))
+        print(f"测试4生成的结果是有效的JSON")
+    except json.JSONDecodeError as e:
+        print(f"测试4生成的结果不是有效的JSON: {e}")
     
     # 验证所有结果是否为有效的JSON
-    for i, result in enumerate([result1, result2, result3], 1):
+    for i, result in enumerate([result1, result2, result3, result4], 1):
         try:
             json_obj = json.loads(result)
             print(f"测试{i}生成的结果是有效的JSON")
