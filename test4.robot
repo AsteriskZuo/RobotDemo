@@ -26,7 +26,7 @@ Test Replace Json String Template
     ${expectedstr}    Set Variable   {"type":5,"objId":10000,"cmd":"fetchUserInfoById","device":"$device","sequence":"$index","info":{"error":0,"return":{"code":0,"message":"$message", "result":"$users"}}, "manager":"UserInfoManager"}
     &{user_info}    Create Dictionary    userId=zuoyu_wy1    nickName=Linda Zimmerman    avatarUrl=xxx    mail=bhill@gmail.com    phone=413.342.9317x85236    gender=${0}    sign=11EAOOpwdr    birth=1993-12-16    ext=zztKZWCPHZ
     &{users_dict}    Create Dictionary    zuoyu_wy1=${user_info}
-    &{expectedarg}    Create Dictionary    device=Mobile    index=${1}    message=""    users=${users_dict}
+    &{expectedarg}    Create Dictionary    device=Mobile    index=${1}    message=${EMPTY}    users=${users_dict}
     ${result}    Test Replace Json String Template    ${expectedstr}    ${expectedarg}
 
     ${test1}    Create Dictionary    key=value
